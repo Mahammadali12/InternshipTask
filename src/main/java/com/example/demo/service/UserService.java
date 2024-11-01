@@ -10,22 +10,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.User;
-import com.example.demo.repository.userRepo;
+import com.example.demo.repository.UserRepo;
 
 @Service
 public class UserService implements UserDetailsService {
 
     @Autowired
-    private userRepo UserRepo;
+    private UserRepo userRepo;
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = UserRepo.findByUsername(username);
-        System.out.println("Repo triggerred");
-        System.out.println(user.toString());
-        System.out.println("222");
-        System.out.println(user);
+        User user = userRepo.findByUsername(username);
         
         if(user == null){
             throw new UsernameNotFoundException("User with username: " + username + " not found");

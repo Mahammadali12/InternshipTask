@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.example.demo.model.Client;
 
-public interface clientRepo extends CrudRepository<Client,Integer> {
+public interface ClientRepo extends CrudRepository<Client,Integer> {
     
 }

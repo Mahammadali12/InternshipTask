@@ -22,11 +22,8 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity httpSecurity) throws Exception{
-        System.out.println("Authentication Manager 1");
         AuthenticationManagerBuilder authenticationManagerBuilder = httpSecurity.getSharedObject(AuthenticationManagerBuilder.class);
-        System.out.println("Authentication Manager 2");
         authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
-        System.out.println("Authentication Manager 3");
         return authenticationManagerBuilder.build();
     }
 
@@ -39,24 +36,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
 
-
-        // httpSecurity.csrf().disable()
-        // .authorizeRequests()
-        // .requestMatchers("http://localhost:8080/Client").permitAll()
-        // .anyRequest()
-        // .authenticated()
-        // .and()
-        // .httpBasic();
-        System.out.println("FIlter chain 1");
-
         httpSecurity.csrf((csrf) -> csrf.disable())
         .authorizeHttpRequests((authorize) -> authorize
-        .requestMatchers("/register","/static/**","/form.html").permitAll()
+        .requestMatchers("/register","/static/**").permitAll()
         .anyRequest().authenticated())
-        .httpBasic(Customizer.withDefaults());
-        
-        System.out.println("FIlter chain 2");
-        
+        .httpBasic(Customizer.withDefaults());        
 
         return httpSecurity.build();
     }
