@@ -42,6 +42,10 @@ public class RController {
     ResponseEntity<User> saveRegister(@RequestParam("password") String password,@RequestParam("username") String username) throws URISyntaxException{
         User user = new User(username, password);
         user = userRepo.save(user);
+        System.out.println("---------------------------------------");
+        System.out.println("USER WAS CREATED");
+        System.out.println(user.toString());
+        System.out.println("----------------------------------------");
         URI uriOfUser = new URI("/user/" + user.getId());
         
         return ResponseEntity.created(uriOfUser).build();
@@ -71,6 +75,10 @@ public class RController {
     ResponseEntity<Client> postClient(@RequestParam String companyName, @RequestParam String contactName, @RequestParam String phoneNumber ) throws URISyntaxException{
         Client cl = new Client(companyName, contactName, phoneNumber);
         Client client = clientRepo.save(cl);
+        System.out.println("-------------------------------");
+        System.out.println("CLIENT WAS CREATED");
+        System.out.println(client.toString());
+        System.out.println("-------------------------------");
         URI uriOfClient = new URI("/client/" + client.getId());
 
         return ResponseEntity.created(uriOfClient).build();
