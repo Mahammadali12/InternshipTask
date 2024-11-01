@@ -9,7 +9,8 @@
 1. User will be reguired *login* and *password* for every endpoint it visits  **except localhost:8080/register** 
 2. Visit **localhost:8080/register** and through **html form page** create a user 
 3. After submitting form, in  the terminal created user will be indicated with id and other information
-4. login to api with `username` and `password` that were submited to **html form**
+4. visit **localhost:8080/client** to create client 
+5. login with `username` and `password` that were submited to **html form**
 
 ## Creating Client
 - In order to create client (make Post request) visit  localhost:8080/client 
